@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimeZone=Asia/Shanghai
+    username: hesen
+    password: 123456
+
+logging:
+  level:
+    root: info
+    com.hesen.blog: debug
+  file:
+    name: log/blog.log
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
