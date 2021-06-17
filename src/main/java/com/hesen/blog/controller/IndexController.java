@@ -9,11 +9,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
-//        String blog = null;
-//        if (blog == null) {
-//            throw new NotFoundException("博客未找到");
-//        }
-        System.out.println("-------index--------");
+
         return "index";
     }
 }
