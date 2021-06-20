@@ -7,17 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 
-@SpringBootTest
+
 class BlogApplicationTests {
 
-    @Autowired
-    private UserMapper userMapper;
+
 
     @Test
     void contextLoads() {
-        User hesen = userMapper.selectByUsernameAndPassword("hesen", "123456");
-        System.out.println(hesen);
+        Object o = new ArrayList<String>();
+        System.out.println(o instanceof List);
     }
 
 }

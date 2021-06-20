@@ -12,8 +12,9 @@ logging:
   file:
     name: log/blog.log
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    use-generated-keys: true

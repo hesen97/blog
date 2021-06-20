@@ -33,7 +33,14 @@ public class LoginController {
                         @RequestParam("password") String password,
                         HttpSession session,
                         RedirectAttributes attributes) {
-        User user = userService.checkUser(username, password);
+        User user = null;
+        try {
+            user = userService.checkUser(username, password);
+        } catch (Exception e) {
+            attributes.addFlashAttribute("message", e.getMessage());
+            return "redirect:/admin";
+        }
+
         if (user != null) {
             user.setPassword("");
             session.setAttribute("user", user);
