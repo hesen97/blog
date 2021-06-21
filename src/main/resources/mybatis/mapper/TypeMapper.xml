@@ -30,4 +30,8 @@
         where name = #{name}
     </select>
 
+    <select id="selectAllTypes" resultType="com.hesen.blog.po.Type">
+        select id, `name` from t_type
+    </select>
+
 </mapper>

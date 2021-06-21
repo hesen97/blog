@@ -2,19 +2,15 @@ package com.hesen.blog.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hesen.blog.constant.MyConst;
-import com.hesen.blog.exception.DaoFailException;
 import com.hesen.blog.po.Type;
 import com.hesen.blog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -26,7 +22,7 @@ public class TypeController {
     @GetMapping("/types")
     public String types(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo,
                         Model model) {
-        Page<Type> page = new Page<>(pageNo, MyConst.PAGE_SIZE);
+        Page<Type> page = new Page<>(pageNo, MyConst.PAGE_SIZE_TYPE);
         Page<Type> pageResult = typeService.page(page);
 
         model.addAttribute("page", pageResult);

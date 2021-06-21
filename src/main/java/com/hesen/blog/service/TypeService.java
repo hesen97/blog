@@ -16,4 +16,6 @@ public interface TypeService extends IService<Type> {
     Type getType(long id);
 
     Type getTypeByName(String name);
+
+    List<Type> listType();
 }

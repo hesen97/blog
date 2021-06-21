@@ -3,13 +3,13 @@ package com.hesen.blog.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hesen.blog.dao.TypeMapper;
 import com.hesen.blog.exception.DaoFailException;
-import com.hesen.blog.exception.POValueIllegalException;
 import com.hesen.blog.po.Type;
 import com.hesen.blog.service.TypeService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements TypeService {
@@ -83,4 +83,11 @@ public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements Ty
             throw new DaoFailException("查询播客异常", e);
         }
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Type> listType() {
+        return typeMapper.selectAllTypes();
+    }
+
 }

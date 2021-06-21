@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hesen.blog.dao.BlogMapper">
+
+
+    <sql id="insertColumn">
+        title, content, first_picture, flag, views, appreciation, share_statement,
+        commentable, published, recommend, create_time, update_time, type_id, user_id
+    </sql>
+
+    <sql id="selectColumn">
+        id, title, content, first_picture, flag, views, appreciation, share_statement,
+        commentable, published, recommend, create_time, update_time, type_id, user_id
+    </sql>
+
+   <insert id="insertBlog">
+        insert into t_blog(<include refid="insertColumn"/>)
+        values(#{title}, #{content}, #{firstPicture}, #{flag}, #{views},
+        #{appreciation}, #{shareStatement}, #{commentable}, #{published}, #{recommend},
+        #{createTime}, #{updateTime}, #{typeId}, #{userId})
+   </insert>
+
+    <delete id="deleteBlog">
+        delete from t_blog
+        where id = #{id}
+    </delete>
+
+    <!--    id	bigint AI PK-->
+    <!--    title	varchar(255)-->
+    <!--    cotent	varchar(3000)-->
+    <!--    first_picture	varchar(255)-->
+    <!--    flag	varchar(45)-->
+    <!--    views	int-->
+    <!--    appreciation	tinyint-->
+    <!--    share_statement	tinyint-->
+    <!--    commentable	tinyint-->
+    <!--    published	tinyint-->
+    <!--    recommend	tinyint-->
+    <!--    create_time	datetime-->
+    <!--    update_time	datetime-->
+    <!--    type_id	bigint-->
+    <!--    user_id	bigint-->
+    <update id="updateBlog">
+        update t_blog
+        <set>
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="content != null and content != ''">content = #{content},</if>
+            <if test="firstPicture != null and firstPicture != ''">first_picture = #{firstPicture},</if>
+            <if test="flag != null and flag != ''">flag = #{flag},</if>
+            <if test="views != null">views = #{views},</if>
+            <if test="appreciation != null">appreciation = #{appreciation},</if>
+            <if test="shareStatement != null">share_statement = #{shareStatement},</if>
+            <if test="commentable != null">commentable = #{commentable},</if>
+            <if test="published != null">published = #{published},</if>
+            <if test="recommend != null">recommend = #{recommend},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="typeId != null">type_id = #{typeId},</if>
+            <if test="userId != null">user_id = #{userId}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectBlogById" resultType="com.hesen.blog.po.Blog">
+        select <include refid="selectColumn"/>
+        from t_blog
+        where id = #{id}
+    </select>
+
+</mapper>

@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hesen.blog.po.Type;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 
 @Mapper
 public interface TypeMapper extends BaseMapper<Type> {
@@ -17,4 +19,6 @@ public interface TypeMapper extends BaseMapper<Type> {
     Type selectTypeById(long id);
 
     Type selectTypeByName(String name);
+
+    List<Type> selectAllTypes();
 }
